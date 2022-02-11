@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Button, View, Text, TextInput, ScrollView, Image } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer, useNavigation, useRoute, useFocusEffect } from "@react-navigation/native";
 
-
-const Film = ({title, resume, notes, link, image}) => {
+const Film = ({title, resume, notes, link}) => {
   return (
     <View style={{ flexDirection: "column", margin : "1rem" }}>
       <Text style={{ fontSize: 32, background: "#CCCF56", padding : "1rem", color : "white", border : "2px solid #3F3175" }}>Titre : {title}</Text>
@@ -23,63 +21,65 @@ const Title = () => {
   );
 }
 
-const Home = ({route}) => {
-
-  const { filmList } = route.params;
-  console.log(filmList);
-
-  return (
-   <><Title></Title><ScrollView style={{ flexDirection: "row", flexWrap: "wrap"}}>
-      {filmList.map((film) => (
-        <Film
-          title={film.title}
-          key={film.id}
-          link={film.link}
-          resume={film.resume}
-          notes={film.notes}
-        ></Film>
-      ))}
-    </ScrollView>
-  </>
-
-
-
-
-    );
-}
-
-const FormFilm = ({navigation}) => {
+const Home = () => {
+  const route = useRoute();
   const initialList =  [
     {
       id : 0,
       title : "film 1", 
       resume : "juste un résumé",
       notes :"20/10",
-      link: "lien"
+      link: "lien",
     },
     {
       id : 1,
       title : "film 2", 
       resume : "juste un 2eme résumé",
       notes :"0/10",
-      link: "lien"
+      link: "lien",
     }
 ];
- 
 
   const [filmList, setFilmToList] = useState(initialList);
+
+  const addFilmToList = () => {
+    const {title, resume, notes, link} = route.params;
+    let id = filmList.length;
+    setFilmToList([...filmList, {id: id, title: title, resume: resume, notes: notes, link: link}]);
+  };
+
+  useFocusEffect(() => {
+    if (!route.params) return;
+    addFilmToList();
+    route.params = null;
+  });
+
+  return (
+   <><Title></Title><ScrollView style={{ flexDirection: "row", flexWrap: "wrap"}}>
+      {filmList.map((film) => (
+        <Film
+          key={film.id}
+          title={film.title}
+          resume={film.resume}
+          notes={film.notes}
+          link={film.link}
+        ></Film>
+      ))}
+    </ScrollView>
+  </>
+
+    );
+}
+
+const FormFilm = () => {
+  
   const [resume, setResume] = useState("");
   const [title, setTitle] = useState("");
   const [notes, setNotes] = useState("");
   const [link, setLink] = useState("");
-  const [validation, setValidation] = useState("");
 
-  const addFilmToList = () => {
-    let id = filmList.length;
-    setFilmToList([...filmList, { id: id, title: title, resume: resume, notes:notes, link:link, image : null }]);
-    setValidation("Formulaire validé");
-  };
-
+  const navigation = useNavigation();
+ 
   return (
   <View style={{display: "flex", margin:"2rem", padding:"2rem", background:"rgb(252, 252, 244)", justifyContent:"center"}}>
 
@@ -123,26 +123,25 @@ const FormFilm = ({navigation}) => {
 
       </View>
 
-      <View style={{display: "flex", width : "fit-content", marginBottom : "1rem", background:"rgb(252, 252, 244)", justifyContent:"center"}}>
+      {/*<View style={{display: "flex", width : "fit-content", marginBottom : "1rem", background:"rgb(252, 252, 244)", justifyContent:"center"}}>
 
         <Button color="#CCCF56" title="Valider" onPress={addFilmToList}></Button>
 
-      </View>
+      </View>*/}
 
       <View style={{display: "flex", width : "fit-content", background:"rgb(252, 252, 244)", justifyContent:"center"}}>
 
-        <Button color="#CCCF56" title="Revenir à la home"
+        <Button color="#CCCF56" title="Ajouter et revenir à la home"
           onPress={() => {
             navigation.navigate({
               name : "Home", 
-              params :{ filmList: filmList }
+              params: {title: title, resume: resume, notes:notes, link:link } 
           });
           }}>
         </Button>
 
       </View>
-
-      <Text style={{ fontSize: 14, padding:"2rem", color:"green" }}>{validation}</Text>
+    
     
     </View>
 
@@ -154,12 +153,8 @@ const FormFilm = ({navigation}) => {
 
 const Tabs = createBottomTabNavigator();
 
-
-
 const App = () => {
-  //const [todoList, setTodoList] = useState([]);
 
-  //penser à ajouter scrollview pour éviter le dépassement de la liste de l'écran
 
   return (
       <NavigationContainer>
@@ -167,7 +162,7 @@ const App = () => {
         <Tabs.Screen 
           name="Home"
           component={Home}
-          initialParams={{ filmList: [null] }} />
+          initialParams={{ title: "", resume: "", notes: "", link: ""}} />
         <Tabs.Screen
           name="Form"
           component={FormFilm}
