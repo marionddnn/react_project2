@@ -93,35 +93,35 @@ const FormFilm = () => {
         color="#CCCF56" title="choisir image">
       </Button>
 
-      </View>
+    </View>
 
-      <View  style={{background:"rgb(235, 225, 142)", width : "fit-content", margin : "1rem"}}>
+    <View  style={{background:"rgb(235, 225, 142)", width : "fit-content", margin : "1rem"}}>
 
-        <TextInput
-          onChangeText={setTitle}
-          style={{background:"#fff", width : "fit-content", margin : "1rem"}}
-          value ={title}
-          placeholder="Titre"/>
+      <TextInput
+        onChangeText={setTitle}
+        style={{background:"#fff", width : "fit-content", margin : "1rem"}}
+        value ={title}
+        placeholder="Titre"/>
 
-        <TextInput
-          style={{background:"#fff", width : "fit-content", margin : "1rem"}}
-          placeholder="Résumé"
-          onChangeText={setResume}
-          value ={resume}/>
+      <TextInput
+        style={{background:"#fff", width : "fit-content", margin : "1rem"}}
+        placeholder="Résumé"
+        onChangeText={setResume}
+        value ={resume}/>
 
-        <TextInput
-          style={{background:"#fff", width : "fit-content", margin : "1rem"}}
-          placeholder="Notes"
-          onChangeText={setNotes}
-          value ={notes}/>
+      <TextInput
+        style={{background:"#fff", width : "fit-content", margin : "1rem"}}
+        placeholder="Notes"
+        onChangeText={setNotes}
+        value ={notes}/>
 
-        <TextInput
-          style={{background:"#fff", width : "fit-content", margin : "1rem"}}
-          value={link}
-          onChangeText={setLink}
-          placeholder="IMBD link"/>
+      <TextInput
+        style={{background:"#fff", width : "fit-content", margin : "1rem"}}
+        value={link}
+        onChangeText={setLink}
+        placeholder="IMBD link"/>
 
-      </View>
+    </View>
 
       {/*<View style={{display: "flex", width : "fit-content", marginBottom : "1rem", background:"rgb(252, 252, 244)", justifyContent:"center"}}>
 
@@ -129,18 +129,18 @@ const FormFilm = () => {
 
       </View>*/}
 
-      <View style={{display: "flex", width : "fit-content", background:"rgb(252, 252, 244)", justifyContent:"center"}}>
+    <View style={{display: "flex", width : "fit-content", background:"rgb(252, 252, 244)", justifyContent:"center"}}>
 
-        <Button color="#CCCF56" title="Ajouter et revenir à la home"
-          onPress={() => {
-            navigation.navigate({
-              name : "Home", 
-              params: {title: title, resume: resume, notes:notes, link:link } 
-          });
-          }}>
-        </Button>
+      <Button color="#CCCF56" title="Ajouter et revenir à la home"
+        onPress={() => {
+          navigation.navigate({
+            name : "Home", 
+            params: {title: title, resume: resume, notes:notes, link:link } 
+        });
+        }}>
+      </Button>
 
-      </View>
+    </View>
     
     
     </View>
