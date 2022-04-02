@@ -84,7 +84,7 @@ const Search = () => {
             <Pressable style={{width:"10%"}} title={item.title} onPress={() => 
                 navigation.navigate({
                     name :"Home", 
-                    params: {title: item.title, resume: item.description, notes:"", link:"" } })}>
+                    params: {title: item.title, resume: item.description, notes:"", link:"https://www.imdb.com/title/"+item.id } })}>
                 <img style={{ width: "100%"}} src={item.image}></img>
             </Pressable>
             )}
