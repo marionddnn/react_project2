@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import FormFilm  from "./FormFilm";
 import  Home  from "./Home";
 import Login from "./Login";
+import Search from "./Search";
 
 const Tabs = createBottomTabNavigator();
 
@@ -22,6 +23,10 @@ const NavigationTabs = () => {
           <Tabs.Screen
             name="Form"
             component={FormFilm}
+          />
+          <Tabs.Screen
+            name="search"
+            component={Search}
           />
         </Tabs.Navigator>
         </NavigationContainer>
