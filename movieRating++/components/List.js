@@ -54,6 +54,11 @@ const List = () => {
     return (
     <>
     <ScrollView style={{ flexDirection: "row", flexWrap: "wrap"}}>
+        <Button title="rechercher dans ma liste" onPress={() => 
+            navigation.navigate({
+                name :"Recherche", 
+                params: {liste : filmList } })}>
+        </Button>
         {filmList.map((film) => (
           <View>
         <Pressable onPress={() => 
@@ -71,12 +76,12 @@ const List = () => {
         </Pressable>
           <Text>Ajouter/modifier une note :</Text>
            <TextInput
-            style={{background:"#fff", width : "fit-content", margin : "1rem"}}
+            style={{background:"#fff", width : "100%", margin : "1rem"}}
             placeholder="Notes"
             onChangeText={setNote}
             onSubmitEditing={() => setNotesFilm(film)}
             value ={note}/>
-            <Button title="submit" onPress={() => setNotesFilm(film)}></Button>
+            <Button title="envoyer" onPress={() => setNotesFilm(film)}></Button>
           </View>
         ))}
       </ScrollView>

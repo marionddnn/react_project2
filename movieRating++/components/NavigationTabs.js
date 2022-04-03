@@ -1,9 +1,9 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import FormFilm  from "./FormFilm";
 import  Home  from "./Home";
 import Login from "./Login";
-import Search from "./Search";
+import SearchList from "./SearchList";
+import Detail from "./Detail";
 
 const Nav = createNativeStackNavigator();
 
@@ -20,6 +20,14 @@ const NavigationTabs = () => {
             name="Accueil"
             component={Home}
             initialParams={{ title: "", resume: "", notes: "", link: ""}} />
+          <Nav.Screen
+            name="Recherche"
+            component={SearchList}
+          />
+          <Nav.Screen
+            name="Detail"
+            component={Detail}
+          />
         </Nav.Navigator>
         </NavigationContainer>
   );

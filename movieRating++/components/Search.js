@@ -19,7 +19,7 @@ const Search = () => {
   const [search, setSearch] = useState("");
   const [nbResults, setNbResults] = useState("");
 
-  const transformFilm = (film, index) => {
+  const transformFilm = (film) => {
     return {
       description: film.description,
       id: film.id,
@@ -51,14 +51,14 @@ const Search = () => {
         <TextInput
         onSubmitEditing={searchFilm}
         onChangeText={setSearch}
-        style={{background:"#fff", width : "fit-content", margin : "1rem"}}
+        style={{background:"#fff", width : "100%", margin : "1rem"}}
         value ={search}
         placeholder="Rechercher un film"/>
         <Button title="submit" onPress={searchFilm}></Button>
         <FlatList style={{ flexDirection: "row", width:"100%"}}
             data={FilmList}
             renderItem={({ item }) => (
-            <Pressable style={{width:"10%"}} title={item.title} onPress={() => 
+            <Pressable style={{width:"100%"}} title={item.title} onPress={() => 
                 navigation.navigate({
                     name :"List", 
                     params: {title: item.title, resume: item.description, notes:"", link:"https://www.imdb.com/title/"+item.id, image : item.image } })}>
