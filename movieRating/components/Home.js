@@ -12,6 +12,7 @@ const Home = () => {
         resume : "juste un résumé",
         notes :"20/10",
         link: "lien",
+        image:"",
       },
       {
         id : 1,
@@ -19,6 +20,7 @@ const Home = () => {
         resume : "juste un 2eme résumé",
         notes :"0/10",
         link: "lien",
+        image:"",
       }
   ];
   
@@ -26,9 +28,9 @@ const Home = () => {
     const [note, setNote] = useState("");
 
     const addFilmToList = () => {
-      const {title, resume, notes, link} = route.params;
+      const {title, resume, notes, link, image} = route.params;
       let id = filmList.length;
-      setFilmToList([...filmList, {id: id, title: title, resume: resume, notes: notes, link: link}]);
+      setFilmToList([...filmList, {id: id, title: title, resume: resume, notes: notes, link: link, image: image}]);
     };
 
     const setNotesFilm = (film) => {
@@ -57,6 +59,7 @@ const Home = () => {
             resume={film.resume}
             notes={film.notes}
             link={film.link}
+            image={film.image}
           ></Film>
           <Text>Ajouter/modifier une note :</Text>
            <TextInput

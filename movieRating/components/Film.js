@@ -1,6 +1,6 @@
 import { View, Text, Image, Linking, Pressable  } from "react-native";
 
-const Film = ({title, resume, notes, link}) => {
+const Film = ({title, resume, notes, link, image}) => {
     return (
       <View style={{ flexDirection: "column", margin : "1rem" }}>
         <Text style={{ fontSize: 32, background: "#CCCF56", padding : "1rem", color : "white", border : "2px solid #3F3175" }}>Titre : {title}</Text>
@@ -16,6 +16,12 @@ const Film = ({title, resume, notes, link}) => {
           }}>Lien IMBD</Text>
         }
       </Pressable>
+      <Image
+        style={{ width: 400, height: 400, background: "#CCCF56", padding : "1rem", color : "#3F3175", border : "2px solid #3F3175" }}
+        source={{
+          uri: image,
+        }}
+      />
         {/*<Image source={{uri:image}} style={{ width: 400, height: 400 }}/>*/}
       </View>
     );

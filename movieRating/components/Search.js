@@ -13,29 +13,6 @@ const {
 
 const baseUrl = "https://imdb-api.com/en/API/SearchMovie/k_73jom5w9/";
 
-/*const createRequest = (obj) => {
-  return (
-    "?" +
-    Object.keys(obj)
-      .map((k) => k + "=" + obj[k])
-      .join("&")
-  );
-};
-
-const SmallProfile = ({ name, picture }) => {
-  return (
-    <View
-      style={{
-        flexDirection: "row",
-        alignItems: "center",
-      }}
-    >
-      <Image style={{ width: 50, height: 50 }} source={{ uri: picture }} />
-      <Text style={{ fontSize: 24 }}>{name}</Text>
-    </View>
-  );
-};*/
-
 const Search = () => {
   const navigation = useNavigation();
   const [FilmList, setFilmList] = useState([]);
@@ -49,6 +26,7 @@ const Search = () => {
       image: film.image,
       resultType: film.resultType,
       title: film.title,
+      image : film.image,
     };
   };
 
@@ -84,7 +62,7 @@ const Search = () => {
             <Pressable style={{width:"10%"}} title={item.title} onPress={() => 
                 navigation.navigate({
                     name :"Home", 
-                    params: {title: item.title, resume: item.description, notes:"", link:"https://www.imdb.com/title/"+item.id } })}>
+                    params: {title: item.title, resume: item.description, notes:"", link:"https://www.imdb.com/title/"+item.id, image : item.image } })}>
                 <img style={{ width: "100%"}} src={item.image}></img>
             </Pressable>
             )}

@@ -59,7 +59,7 @@ const FormFilm = () => {
             onPress={() => {
               navigation.navigate({
                 name : "Home", 
-                params: {title: title, resume: resume, notes:notes, link:link } 
+                params: {title: title, resume: resume, notes:notes, link:link, image:"" } 
             });
           }}>
           </Button>
