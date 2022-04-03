@@ -17,12 +17,11 @@ const Film = ({title, resume, notes, link, image}) => {
         }
       </Pressable>
       <Image
-        style={{ width: 400, height: 800, background: "#CCCF56", padding : "1rem", color : "#3F3175", border : "2px solid #3F3175" }}
+        style={{ width: "100%", height: 500, background: "#CCCF56", padding : "1rem", color : "#3F3175", border : "2px solid #3F3175" }}
         source={{
           uri: image,
         }}
       />
-        {/*<Image source={{uri:image}} style={{ width: 400, height: 400 }}/>*/}
       </View>
     );
 }

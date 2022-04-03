@@ -43,7 +43,7 @@ const SearchList = () => {
       <TextInput
         onSubmitEditing={searchFilm}
         onChangeText={setSearch}
-        style={{background:"#fff", width : "100%", margin : "1rem"}}
+        style={{background:"#fff", width : "100%", padding : "1rem"}}
         value ={search}
         placeholder="Rechercher un film"/>
         <Button title="submit" onPress={searchFilm}></Button>

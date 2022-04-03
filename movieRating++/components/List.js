@@ -53,7 +53,7 @@ const List = () => {
   
     return (
     <>
-    <ScrollView style={{ flexDirection: "row", flexWrap: "wrap"}}>
+    <ScrollView>
         <Button title="rechercher dans ma liste" onPress={() => 
             navigation.navigate({
                 name :"Recherche", 
@@ -76,7 +76,7 @@ const List = () => {
         </Pressable>
           <Text>Ajouter/modifier une note :</Text>
            <TextInput
-            style={{background:"#fff", width : "100%", margin : "1rem"}}
+            style={{background:"#fff", width : "100%", padding : "1rem"}}
             placeholder="Notes"
             onChangeText={setNote}
             onSubmitEditing={() => setNotesFilm(film)}

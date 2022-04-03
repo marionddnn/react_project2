@@ -27,7 +27,7 @@ const FormFilm = () => {
 
           </View>
 
-          <View  style={{background:"rgb(235, 225, 142)", width : "fit-content", margin : "1rem"}}>
+          <View  style={{background:"rgb(235, 225, 142)", width : "100%", padding : "1rem"}}>
 
             <TextInput
               onChangeText={setTitle}
