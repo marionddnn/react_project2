@@ -1,34 +1,26 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import FormFilm  from "./FormFilm";
 import  Home  from "./Home";
 import Login from "./Login";
 import Search from "./Search";
 
-const Tabs = createBottomTabNavigator();
+const Nav = createNativeStackNavigator();
 
 const NavigationTabs = () => {
 
   return (
         <NavigationContainer>
-        <Tabs.Navigator initialRouteName="Login">
-          <Tabs.Screen
+        <Nav.Navigator initialRouteName="Login">
+          <Nav.Screen
             name="Login"
             component={Login}
           />
-          <Tabs.Screen 
-            name="Home"
+          <Nav.Screen
+            name="Accueil"
             component={Home}
             initialParams={{ title: "", resume: "", notes: "", link: ""}} />
-          <Tabs.Screen
-            name="Form"
-            component={FormFilm}
-          />
-          <Tabs.Screen
-            name="search"
-            component={Search}
-          />
-        </Tabs.Navigator>
+        </Nav.Navigator>
         </NavigationContainer>
   );
 };

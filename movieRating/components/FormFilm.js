@@ -58,7 +58,7 @@ const FormFilm = () => {
           <Button color="#CCCF56" title="Ajouter et revenir à la home"
             onPress={() => {
               navigation.navigate({
-                name : "Home", 
+                name : "List", 
                 params: {title: title, resume: resume, notes:notes, link:link, image:"" } 
             });
           }}>
