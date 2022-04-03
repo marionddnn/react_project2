@@ -3,7 +3,6 @@ import { Button, View, Text, TextInput } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 const FormFilm = () => {
-
   const [resume, setResume] = useState("");
   const [title, setTitle] = useState("");
   const [notes, setNotes] = useState("");
@@ -53,12 +52,6 @@ const FormFilm = () => {
             placeholder="IMBD link"/>
 
         </View>
-
-          {/*<View style={{display: "flex", width : "fit-content", marginBottom : "1rem", background:"rgb(252, 252, 244)", justifyContent:"center"}}>
-
-            <Button color="#CCCF56" title="Valider" onPress={addFilmToList}></Button>
-
-          </View>*/}
 
         <View style={{display: "flex", width : "fit-content", background:"rgb(252, 252, 244)", justifyContent:"center"}}>
 
