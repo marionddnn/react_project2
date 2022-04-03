@@ -11,13 +11,10 @@ const {
   Pressable,
 } = require("react-native");
 
-const baseUrl = "https://imdb-api.com/en/API/SearchMovie/k_73jom5w9/";
-
 const Search = () => {
   const navigation = useNavigation();
   const [FilmList, setFilmList] = useState([]);
   const [search, setSearch] = useState("");
-  const [nbResults, setNbResults] = useState("");
 
   const transformFilm = (film, index) => {
     return {
@@ -32,20 +29,14 @@ const Search = () => {
 
   const searchFilm = () => {
       setSearch();
-      fetchFilms();
   }
-
-  const fetchFilms = async () => {
-    let res = await fetch(baseUrl + search);
-    let json = await res.json();
-    json.results !== null && json.results.length !== 0 ? (setFilmList(json.results.map(transformFilm)), setNbResults(json.results.length)) : setNbResults("Aucun résultats");
-  };
 
   useEffect(() => {
     
   }, []);
 
   return (
+    <ScrollView>
     <View>
         <Text>{nbResults}</Text>
         <TextInput
@@ -60,7 +51,7 @@ const Search = () => {
             renderItem={({ item }) => (
             <Pressable style={{width:"10%"}} title={item.title} onPress={() => 
                 navigation.navigate({
-                    name :"List", 
+                    name :"Accueil", 
                     params: {title: item.title, resume: item.description, notes:"", link:"https://www.imdb.com/title/"+item.id, image : item.image } })}>
                 <img style={{ width: "100%"}} src={item.image}></img>
             </Pressable>
@@ -68,6 +59,7 @@ const Search = () => {
             keyExtractor={(item) => item.id}
         />
     </View>
+    </ScrollView>
   );
 };
 
