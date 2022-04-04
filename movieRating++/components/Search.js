@@ -63,7 +63,7 @@ const Search = () => {
                 navigation.navigate({
                     name :"List", 
                     params: {title: item.title, resume: item.description, notes:"", link:"https://www.imdb.com/title/"+item.id, image : item.image } })}>
-                <img style={{ width: "50%", height : "75%"}} src={item.image}></img>
+                <img style={{ width: "350px", height : "500px"}} src={item.image}></img>
             </Pressable>
             )}
             keyExtractor={(item) => item.id}
